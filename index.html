@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info Vương KMA</title>
+    <link
+        href="https://cdn1.iconfinder.com/data/icons/soleicons-fill-vol-1/64/reactjs_javascript_library_atom_atomic_react-512.png"
+        rel="icon" />
     <!--font awasome icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
@@ -15,15 +18,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!--my css file-->
     <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+
 </head>
 
 <body>
     <video autoplay muted plays-inline loop>
         <source src="./img/2.mp4" type="video/mp4">
     </video>
-    <video autoplay preload loop hidden>
-        <source src="./img/music.mp4" type="video/mp4">
-    </video>
+    <audio autoplay id="player" loop muted src="music/1.mp3">
+        <source src="music/1.mp3" type="audio/mp3" />
+    </audio>
+
     <div class="container">
         <button class="call"><i class="fa-solid fa-phone"></i></button>
         <div class="card move">
@@ -82,42 +88,55 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script>
+        var container = document.querySelector('.container')
+        var icons = document.querySelector('.icons')
+        var call = document.querySelector('.call')
+        var body = document.querySelector('body')
+        var card = document.querySelector('.card')
 
+        let btnInstagram = document.querySelector('#btn-instagram')
+        btnInstagram.addEventListener("click", () => {
+            window.open('https://www.instagram.com/vuongkma/', '_blank');
+        })
+        let btnFacebook = document.querySelector('#btn-facebook')
+        btnFacebook.addEventListener("click", () => {
+            window.open('https://www.facebook.com/vuongDTTN', '_blank');
+        })
+        let btnGithub = document.querySelector('#btn-github')
+        btnGithub.addEventListener("click", () => {
+            window.open('https://github.com/vuonga7k8lah', '_blank');
+        })
+
+        setTimeout(function () {
+            container.classList.add('move')
+        }, 3000)
+
+        setTimeout(function () {
+            icons.style = "opacity: 0"
+            call.style = "opacity: 0"
+        }, 2000)
+        setTimeout(function () {
+            card.classList.remove('move')
+            icons.style = "opacity: 1"
+            call.style = "opacity: 1"
+        }, 6000)
+        document.addEventListener("click", musicPlay);
+
+        function videoPlay(id) {
+            document.getElementById(id).muted = false;
+            document.getElementById(id).play();
+        }
+
+        function musicPlay() {
+            document.getElementById("player").muted = false;
+            document.getElementById("player").play();
+        }
+
+    </script>
 </body>
 
 </html>
-<script>
-    var container = document.querySelector('.container')
-    var icons = document.querySelector('.icons')
-    var call = document.querySelector('.call')
-    var body = document.querySelector('body')
-    var card = document.querySelector('.card')
-
-    let btnInstagram = document.querySelector('#btn-instagram')
-    btnInstagram.addEventListener("click", () => {
-        window.open('https://www.instagram.com/vuongkma/', '_blank');
-    })
-    let btnFacebook = document.querySelector('#btn-facebook')
-    btnFacebook.addEventListener("click", () => {
-        window.open('https://www.facebook.com/vuongDTTN', '_blank');
-    })
-    let btnGithub = document.querySelector('#btn-github')
-    btnGithub.addEventListener("click", () => {
-        window.open('https://github.com/vuonga7k8lah', '_blank');
-    })
-
-    setTimeout(function () {
-        container.classList.add('move')
-    }, 3000)
-
-    setTimeout(function () {
-        icons.style = "opacity: 0"
-        call.style = "opacity: 0"
-    }, 2000)
-    setTimeout(function () {
-        card.classList.remove('move')
-        icons.style = "opacity: 1"
-        call.style = "opacity: 1"
-    }, 6000)
-
-</script>
