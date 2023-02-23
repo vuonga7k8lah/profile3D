@@ -5,7 +5,6 @@ let textConfig = {
 window.onload = function () {
     if (window.jQuery) {
         jQuery(document).ready(function () {
-            console.log("Xx");
             // process barR
             setTimeout(function () {
                 firstQuestion();
@@ -19,18 +18,22 @@ window.onload = function () {
             jQuery("#yes").html(textConfig.text6);
 
             function firstQuestion() {
-                jQuery(".container").hide();
-                Swal.fire({
-                    title: textConfig.text1,
-                    text: textConfig.text2,
-                    imageUrl: "img/cuteCat.jpg",
-                    imageWidth: 300,
-                    imageHeight: 300,
-                    background: '#fff url("img/iput-bg.jpg")',
-                    imageAlt: "Custom image",
-                }).then(function () {
-                    jQuery(".container").show(200);
-                });
+                if (
+                    !(Math.min(window.screen.width, window.screen.height) < 768)
+                ) {
+                    jQuery(".container").hide();
+                    Swal.fire({
+                        title: textConfig.text1,
+                        text: textConfig.text2,
+                        imageUrl: "img/cuteCat.jpg",
+                        imageWidth: 300,
+                        imageHeight: 300,
+                        background: '#fff url("img/iput-bg.jpg")',
+                        imageAlt: "Custom image",
+                    }).then(function () {
+                        jQuery(".container").show(200);
+                    });
+                }
             }
 
             // show popup
